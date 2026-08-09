@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api-docs - API Documentation</title>
+    <style>
+        body { margin: 0; padding: 0; }
+        #opencollection-container { width: 100vw; height: 100vh; }
+    </style>
+    <link rel="stylesheet" href="https://cdn.usebruno.com/api-docs/api-docs.css">
+    <script src="https://cdn.usebruno.com/api-docs/api-docs.js"></script>
+</head>
+<body>
+    <div id="opencollection-container"></div>
+    <script>
+        const collectionData = "opencollection: 1.0.0\ninfo:\n  name: api-docs\nconfig:\n  proxy:\n    inherit: true\n    config:\n      protocol: http\n      hostname: ''\n      port: ''\n      auth:\n        username: ''\n        password: ''\n      bypassProxy: ''\n  environments:\n    - name: 00 - local\n      variables:\n        - name: baseUrl\n          value: http://localhost:8080\n    - name: 03 - prod\n      variables:\n        - name: baseUrl\n          value: http://routine.homelab\nitems:\n  - info:\n      name: Health\n      type: http\n      seq: 1\n    http:\n      method: GET\n      url: '{{baseUrl}}/health'\n      auth: inherit\n    runtime:\n      variables:\n        - name: baseUrl\n          value: http://localhost:8080\n    settings:\n      encodeUrl: true\n      timeout: 0\n      followRedirects: true\n      maxRedirects: 5\nbundled: true\nextensions:\n  bruno:\n    ignore:\n      - node_modules\n      - .git\n    exportedAt: '2026-08-09T18:55:56.093Z'\n    exportedUsing: Bruno/4.0.0\n";
+        new window.OpenCollection({
+            target: document.getElementById('opencollection-container'),
+            opencollection: collectionData,
+            theme: 'light'
+        });
+    </script>
+</body>
+</html>
